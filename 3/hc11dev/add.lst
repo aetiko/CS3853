@@ -1,0 +1,21 @@
+AS11M 01.05  Thu Mar 18, 2021 00:16  add.lst
+
+0001                             ; ADD 2 8 BIT NUMBERS
+0002                             ;
+0003                             
+0004 0000                        	ORG	$0000;
+0005 0000 02                     NUM1	FCB	$02;
+0006 0001 02                     NUM2	FCB	$02;
+0007 0002 00                     SUM8	FCB	$00;
+0008                             
+0009 e000                        	ORG	$E000;
+0010 e000 96 00                  	LDAA	NUM1;
+0011 e002 d6 01                  	LDAB	NUM2;
+0012 e004 1b                     	ABA;
+0013 e005 19                     	DAA;
+0014 e006 97 02                  	STAA	SUM8;
+0015 e008 01                     	NOP;
+
+
+Number of errors 0
+Number of warnings 0

@@ -1,0 +1,18 @@
+AS11M 01.05  Wed Mar 17, 2021 22:21  swap.lst
+
+0001                             ; Exchange loactions NUM1 and NUM2 (1 byte positive integers)
+0002                             ;
+0003                             
+0004 0000                        	ORG	$0000;	START DATA AT 0000
+0005 0000 99                     NUM1	FCB	$99;	RESERVE STORAGE FOR THE FIRST NUMBBER
+0006 0001 a0                     NUM2	FCB	$A0;	RESERVE STORAGE FOR THE SECOND NUMBER
+0007 e000                        	ORG	$E000;	CONTINUE WITH PROGRAM AT E000
+0008 e000 96 00                  	LDAA	NUM1;	LOAD THE FIRST NUMBER
+0009 e002 d6 01                  	LDAB	NUM2;	LOAD THE SECOND NUMBER
+0010 e004 97 01                  	STAA	NUM2;	STORE THE FIRST NUMBER
+0011 e006 d7 00                  	STAB	NUM1;	STORE SECOND NUMBER
+0012 e008 01                     	NOP;		PROGRAM ENDS
+
+
+Number of errors 0
+Number of warnings 0
