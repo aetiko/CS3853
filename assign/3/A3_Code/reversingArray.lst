@@ -1,0 +1,39 @@
+AS11M 01.05  Thu Apr 01, 2021 23:36  reversingArray.lst
+
+0001 0000                                      ORG      $0000;   start data at 0000
+0002 0000 05                     N             FCB      5;       array size
+0003 0001 01 02 03 04 05         ARR           FCB      1,2,3,4,5;     array values
+0004 0006 00                     NEW	      FCB;
+0005 e000                                      ORG      $E000;  continue with program at E000
+0006 e000 ce 00 01                             LDX      #ARR;   load the address of the arrayS END
+0007 e003 18 ce 00 06            	      LDY      #NEW;
+0008 e007 96 00                                LDAA     N;      load the size of the array
+0009                              
+0010 e009 bd e0 0d                             JSR      LOAD;   call the subroutine 
+0011 e00c 01                                   NOP;              this is where your program ends
+0012                             ;                              (you may need to set a
+0013                             ;                               breakpoint here)
+0014                             ;
+0015 e00d e6 00                  LOAD		LDAB	0,X;
+0016 e00f 18 e7 00               		STAB	0,Y;
+0017 e012 18 08                  		INY;
+0018 e014 08                     		INX;
+0019 e015 4a                     		DECA;
+0020 e016 26 f5                  		BNE	LOAD;
+0021 e018 18 ce 00 0a            		LDY	#NEW+4;
+0022 e01c ce 00 01               		LDX	#ARR;
+0023 e01f 96 00                  		LDAA	N;
+0024 e021 bd e0 24               		JSR	REVERSE1;
+0025                             
+0026 e024 18 e6 00               REVERSE1	LDAB	0,Y;
+0027 e027 e7 00                  		STAB	0,X;
+0028 e029 08                     		INX;
+0029 e02a 18 09                  		DEY;
+0030 e02c 4a                     		DECA;	
+0031 e02d 26 f5                  		BNE	REVERSE1;
+0032 e02f 39                     		RTS;
+0033                             		
+
+
+Number of errors 0
+Number of warnings 0
